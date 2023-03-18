@@ -60,7 +60,7 @@ namespace DisponibiliteApp
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void supprimerEmployeButton_Click(object sender, RoutedEventArgs e)
+        private void  SupprimerEmployeButton_Click(object sender, RoutedEventArgs e)
         {
             if (EmployesListView.SelectedItem != null)
             {
@@ -81,7 +81,7 @@ namespace DisponibiliteApp
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void ajouterEmployeButton_Click(object sender, RoutedEventArgs e)
+        private void AjouterEmployeButton_Click(object sender, RoutedEventArgs e)
         {
             if (!string.IsNullOrEmpty(NomTextBox.Text) && !string.IsNullOrEmpty(PrenomTextBox.Text))
             {
@@ -120,6 +120,48 @@ namespace DisponibiliteApp
                 Disponibilites.Remove(disponibilite);
             }
         }
+
+        private void AjouterDisponibiliteButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Récupération des données de la disponibilité depuis l'interface
+            int employeId = int.Parse(EmployeIdTextBox.Text);
+            string jourSemaine = JourSemaineTextBox.Text;
+            TimeSpan heureDebut = TimeSpan.Parse(HeureDebutTextBox.Text);
+            TimeSpan heureFin = TimeSpan.Parse(HeureFinTextBox.Text);
+
+            // Création de l'objet Disponibilite correspondant
+            Disponibilite nouvelleDispo = new Disponibilite(employeId, jourSemaine, heureDebut, heureFin);
+
+            // Ajout de la disponibilité à la base de données
+            using (var db = new DisponibiliteDbContext())
+            {
+                db.Disponibilites.Add(nouvelleDispo);
+                db.SaveChanges();
+            }
+
+            // Ajout de la disponibilité à la liste des disponibilités affichées dans l'interface
+            Disponibilites.Add(nouvelleDispo);
+            DisponibilitesDataGrid.Items.Refresh();
+
+            // Réinitialisation des champs de l'interface
+            EmployeIdTextBox.Text = "";
+            JourSemaineTextBox.Text = "";
+            HeureDebutTextBox.Text = "";
+            HeureFinTextBox.Text = "";
+        }
+
+        private void RecupererDisponibilitesButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Récupération des disponibilités depuis la base de données
+            using (var db = new DisponibiliteDbContext())
+            {
+                Disponibilites = db.Disponibilites.ToList();
+            }
+
+            // Affichage des disponibilités dans l'interface
+            DisponibilitesDataGrid.ItemsSource = Disponibilites;
+        }
+
     }
 
 }

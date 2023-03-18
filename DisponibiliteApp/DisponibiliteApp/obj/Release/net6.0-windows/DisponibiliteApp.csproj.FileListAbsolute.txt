@@ -1,0 +1,5 @@
+C:\Users\ramzizigic\source\repos\Conception\DisponibiliteApp\DisponibiliteApp\obj\Release\net6.0-windows\DisponibiliteApp.csproj.AssemblyReference.cache
+C:\Users\ramzizigic\source\repos\Conception\DisponibiliteApp\DisponibiliteApp\obj\Release\net6.0-windows\MainWindow.g.cs
+C:\Users\ramzizigic\source\repos\Conception\DisponibiliteApp\DisponibiliteApp\obj\Release\net6.0-windows\App.g.cs
+C:\Users\ramzizigic\source\repos\Conception\DisponibiliteApp\DisponibiliteApp\obj\Release\net6.0-windows\DisponibiliteApp_MarkupCompile.cache
+C:\Users\ramzizigic\source\repos\Conception\DisponibiliteApp\DisponibiliteApp\obj\Release\net6.0-windows\DisponibiliteApp_MarkupCompile.lref

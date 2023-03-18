@@ -23,10 +23,10 @@
             </StackPanel>
             <StackPanel Margin="10">
                 <Button x:Name="AjouterEmployeButton" Content="Ajouter employé" Command="{Binding AjouterEmployeCommand}" Click="AjouterEmployeButton_Click" />
-                <Button x:Name="RecupererDisponibilitesButton" Content="Récupérer disponibilités" Command="{Binding RecupererDisponibilitesCommand}" Margin="0 5" Click="RecupererDisponibilitesButton_Click" />
+                <Button Content="Récupérer les disponibilités" Click="RecupererDisponibilitesButton_Click"/>
                 <Button x:Name="SupprimerDisponibiliteButton" Content="Supprimer disponibilité" Command="{Binding SupprimerDisponibiliteCommand}" Margin="0 5" Click="SupprimerDisponibiliteButton_Click" />
                 <Button x:Name="AjouterDisponibiliteButton" Content="Ajouter disponibilité" Command="{Binding AjouterDisponibiliteCommand}" Margin="0 5" Click="AjouterDisponibiliteButton_Click" />
-                <Button x:Name="SupprimerEmployeButton_Click" Content="Supprimer Employ" Command="{Binding SupprimerEmployeCommand}" Margin="0 5" Click="SupprimerEmployeButton_Click" />
+                <Button x:Name="SupprimerEmployeButton" Content="Supprimer Employ" Command="{Binding SupprimerEmployeCommand}" Margin="0 5" Click="SupprimerEmployeButton_Click" />
             </StackPanel>
         </StackPanel>
         <ListView x:Name="EmployesListView" ItemsSource="{Binding Employes}" Grid.Column="1"
