@@ -1,0 +1,59 @@
+﻿<Window x:Class="DisponibiliteApp.MainWindow"
+     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+     xmlns:local="clr-namespace:DisponibiliteApp"
+     mc:Ignorable="d"
+     Title="MainWindow" Height="450" Width="800"
+     DataContext="{Binding RelativeSource={RelativeSource Self}}">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="2*" />
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0">
+            <TextBox x:Name="NomTextBox" Text="{Binding NomTextBoxText}" Margin="10" />
+            <TextBox x:Name="PrenomTextBox" Text="{Binding PrenomTextBoxText}" Margin="10" />
+            <ComboBox x:Name="JourSemaineComboBox" ItemsSource="{Binding JoursSemaine}" SelectedItem="{Binding JourSemaineSelectionne}" Margin="10" />
+            <StackPanel Orientation="Horizontal" Margin="10">
+                <TextBox x:Name="HeureDebutTextBox" Text="{Binding HeureDebutText}" Width="50" />
+                <TextBlock Text="-" Margin="5" />
+                <TextBox x:Name="HeureFinTextBox" Text="{Binding HeureFinText}" Width="50" />
+            </StackPanel>
+            <StackPanel Margin="10">
+                <Button x:Name="AjouterEmployeButton" Content="Ajouter employé" Command="{Binding AjouterEmployeCommand}" Click="AjouterEmployeButton_Click" />
+                <Button x:Name="RecupererDisponibilitesButton" Content="Récupérer disponibilités" Command="{Binding RecupererDisponibilitesCommand}" Margin="0 5" Click="RecupererDisponibilitesButton_Click" />
+                <Button x:Name="SupprimerDisponibiliteButton" Content="Supprimer disponibilité" Command="{Binding SupprimerDisponibiliteCommand}" Margin="0 5" Click="SupprimerDisponibiliteButton_Click" />
+                <Button x:Name="AjouterDisponibiliteButton" Content="Ajouter disponibilité" Command="{Binding AjouterDisponibiliteCommand}" Margin="0 5" Click="AjouterDisponibiliteButton_Click" />
+                <Button x:Name="SupprimerEmployeButton_Click" Content="Supprimer Employ" Command="{Binding SupprimerEmployeCommand}" Margin="0 5" Click="SupprimerEmployeButton_Click" />
+            </StackPanel>
+        </StackPanel>
+        <ListView x:Name="EmployesListView" ItemsSource="{Binding Employes}" Grid.Column="1"
+              SelectedItem="{Binding EmployeSelectionne}" Margin="10" d:ItemsSource="{d:SampleData ItemCount=5}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Nom}" Margin="5" />
+                        <TextBlock Text="{Binding Prenom}" Margin="5" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <ComboBox x:Name="JourSemaine" Grid.Column="1" Margin="10" ItemsSource="{Binding JoursSemaine}" SelectedItem="{Binding JourSemaineSelectionne}" />
+        <TextBox x:Name="HeureDebut" Grid.Column="1" Margin="10" Text="{Binding HeureDebutTextBoxText}" />
+        <TextBox x:Name="HeureFin" Grid.Column="1" Margin="10" Text="{Binding HeureFinTextBoxText}" />
+
+        <ListBox x:Name="DisponibilitesListBox" ItemsSource="{Binding Disponibilites}" Grid.Column="1" Margin="10, 60, 10, 10">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Jour}" Margin="5" />
+                        <TextBlock Text="{Binding HeureDebut}" Margin="5" />
+                        <TextBlock Text="{Binding HeureFin}" Margin="5" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
+</Window>
